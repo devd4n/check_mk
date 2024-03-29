@@ -45,6 +45,9 @@ SSLCertificateFile /etc/letsencrypt/live/<<fqdn>>/cert.pem
 Header always set Strict-Transport-Security "max-age=43200"
 
 
+### Config default page and settings
+
+touch /var/www/html/check_mk.html
 
 /etc/apache2/sites-enabled/000-default
 RewriteEngine On
@@ -53,6 +56,7 @@ RewriteCond %{SERVER_PORT} !^443$
 RewriteRule (.*) https://%{HTTP_HOST}$1 [L]
 # Rewrite / to use another path (intern redirecting - not visible for client)
 RewriteRule    "^/$"  "/check_mk.html" [PT]
+RewriteRule    "^/index.html$"  "/check_mk.html" [PT]
 # This section passes the system Apaches connection mode to the
 # instance Apache. Make sure mod_headers is enabled, otherwise it
 # will be ignored and "Analyze configuration" will issue "WARN".
@@ -61,6 +65,15 @@ RewriteRule    "^/$"  "/check_mk.html" [PT]
     RequestHeader set X-Forwarded-SSL expr=%{HTTPS}
 </IfModule>
 
+### Create Site
+omd init monitoring-test1
+
+### Create Site Choosing Menu
+
+# get all sites and write a link record to check_mk.html (ls /omd/sites/)
+echo "<meta http-equiv=\"refresh\" content=\"300;/$(ls /omd/sites/ | head -1)\" />" > /var/www/html/check_mk.html
+echo "<h2>SITES</h2>" > /var/www/html/check_mk.html
+x="$(ls /omd/sites/)"; for i in "${x[@]}"; do echo "<p><a href="/">$i</a></p> >> /var/www/html/check_mk.html"; done
 
 
 

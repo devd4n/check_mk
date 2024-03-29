@@ -5,7 +5,7 @@ CMK_SUBVERSION=0
 CMK_TYPE=raw
 CMK_OS=$(cat /etc/lsb-release | grep DISTRIB_CODENAME | cut -d "=" -f 2)
 CMK_ARCH=$(dpkg --print-architecture)
-CMK_DEB=$(check-mk-${CMK_TYPE}-${CMK_VERSION}_${CMK_SUBVERSION}.${CMK_OS}_${CMK_ARCH}.deb)
+CMK_DEB=$(echo check-mk-${CMK_TYPE}-${CMK_VERSION}_${CMK_SUBVERSION}.${CMK_OS}_${CMK_ARCH}.deb)
 
 apt update
 apt install openssh-server dpkg-sig -y

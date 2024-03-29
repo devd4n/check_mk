@@ -13,5 +13,5 @@ mkdir -p /temp/
 wget https://download.checkmk.com/checkmk/Check_MK-pubkey.gpg -P /temp/
 gpg --import /temp/Check_MK-pubkey.gpg
 
-wget https://download.checkmk.com/checkmk/${CMK_VERSION}/${CMK_DEB}
+wget https://download.checkmk.com/checkmk/${CMK_VERSION}/${CMK_DEB} -P /temp/
 dpkg-sig --verify /temp/${CMK_DEB} || gpg --verify /temp/${CMK_DEB} || echo "Error to check CMK package signature"

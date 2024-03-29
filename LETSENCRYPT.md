@@ -67,6 +67,8 @@ RewriteRule    "^/index.html$"  "/check_mk.html" [PT]
 
 ### Create Site
 omd create test_monitoring1
+# change password:
+cmk-passwd cmkadmin
 
 ### Create Site Choosing Menu
 

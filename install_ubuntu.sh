@@ -14,4 +14,4 @@ wget https://download.checkmk.com/checkmk/Check_MK-pubkey.gpg -P /temp/
 gpg --import /temp/Check_MK-pubkey.gpg
 
 wget https://download.checkmk.com/checkmk/${CMK_VERSION}/${CMK_DEB}
-dpkg-sig --verify /temp/check-mk-raw-2.2.0p1_0.jammy_amd64.deb || gpg --verify /temp/check-mk-raw-2.2.0p1_0.jammy_amd64.deb || echo "Error to check CMK package signature"
+dpkg-sig --verify /temp/${CMK_DEB} || gpg --verify /temp/${CMK_DEB} || echo "Error to check CMK package signature"

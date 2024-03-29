@@ -32,3 +32,10 @@ certbot renew --dry-run
 Set Automatic Renewal using Cron Job
 
 echo "0 0 * * *  /etc/init.d/apache2 reload >/dev/null 2>&1" > /etc/cron.d/certbot.cron
+
+### SSL_ERROR_RX_RECORD_TOO_LONG
+
+
+
+
+

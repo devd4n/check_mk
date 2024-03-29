@@ -1,5 +1,7 @@
 # Let’s Encrypt DNS Challenge - Cloudflare
 
+https://certbot-dns-cloudflare.readthedocs.io/en/stable/
+
 Create a cloudflare.ini file inside /root/.secrets/ directory.
 
 mkdir -p /root/.secrets/ && cd /root/.secrets/ && touch cloudflare.ini

@@ -73,7 +73,8 @@ omd create test_monitoring1
 # get all sites and write a link record to check_mk.html (ls /omd/sites/)
 echo "<meta http-equiv=\"refresh\" content=\"300;/$(ls /omd/sites/ | head -1)\" />" > /var/www/html/check_mk.html
 echo "<h2>SITES</h2>" >> /var/www/html/check_mk.html
-x="$(ls /omd/sites/)"; for i in "${x[@]}"; do echo "<p><a href=\$i"/\">$i</a></p>" >> /var/www/html/check_mk.html; done
+x="$(ls /omd/sites/)"; for i in "${x[@]}"; do echo "<p><a href=\"/$i\">$i</a></p>" >> /var/www/html/check_mk.html; done
+systemctl restart apache2
 
 
 

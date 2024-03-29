@@ -51,6 +51,8 @@ RewriteEngine On
 # Next 2 lines: Force redirection if incoming request is not on 443
 RewriteCond %{SERVER_PORT} !^443$
 RewriteRule (.*) https://%{HTTP_HOST}$1 [L]
+# Rewrite / to use another path (intern redirecting - not visible for client)
+RewriteRule    "^/$"  "/check_mk.html" [PT]
 # This section passes the system Apaches connection mode to the
 # instance Apache. Make sure mod_headers is enabled, otherwise it
 # will be ignored and "Analyze configuration" will issue "WARN".

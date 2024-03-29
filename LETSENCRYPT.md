@@ -35,6 +35,28 @@ echo "0 0 * * *  /etc/init.d/apache2 reload >/dev/null 2>&1" > /etc/cron.d/certb
 
 ### SSL_ERROR_RX_RECORD_TOO_LONG
 
+/etc/apache2/sites-enabled/default-ssl.conf
+SSLEngine on
+SSLCertificateKeyFile /etc/letsencrypt/live/<<fqdn>>/privkey.pem
+SSLCertificateChainFile /etc/letsencrypt/live/<<fqdn>>/chain.pem
+SSLCertificateFile /etc/letsencrypt/live/<<fqdn>>/cert.pem
+
+
+/etc/apache2/sites-enabled/000-default
+RewriteEngine On
+# Next 2 lines: Force redirection if incoming request is not on 443
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule (.*) https://%{HTTP_HOST}$1 [L]
+# This section passes the system Apaches connection mode to the
+# instance Apache. Make sure mod_headers is enabled, otherwise it
+# will be ignored and "Analyze configuration" will issue "WARN".
+<IfModule headers_module>
+    RequestHeader set X-Forwarded-Proto expr=%{REQUEST_SCHEME}
+    RequestHeader set X-Forwarded-SSL expr=%{HTTPS}
+</IfModule>
+
+
+
 
 
 

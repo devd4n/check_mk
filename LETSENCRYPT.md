@@ -32,10 +32,4 @@ certbot renew --dry-run
 
 Set Automatic Renewal using Cron Job
 
-    Type crontab -e
-    Type 1 for nano editor
-    Enter below command and save
-
-0 0 * * *  /etc/init.d/apache2 reload >/dev/null 2>&1
-
-
+echo "0 0 * * *  /etc/init.d/apache2 reload >/dev/null 2>&1" > /etc/cron.d/certbot.cron

@@ -7,8 +7,7 @@ chmod 0400 /root/.secrets/cloudflare.ini
 
 Add the below code and save using CTRL+O and exit using CTRL+X
 
-dns_cloudflare_email = "your-cloudflare-email@example.com"
-dns_cloudflare_api_key = "XXXXXXXXXXXXXXXXX"
+dns_cloudflare_api_token = "XXXXXXXXXXXXXXXXX"
 
 Find your Cloudflare e-mail and Global API key at “My Profile” > API Tokens > Global API Key
 

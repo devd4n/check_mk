@@ -40,6 +40,8 @@ SSLEngine on
 SSLCertificateKeyFile /etc/letsencrypt/live/<<fqdn>>/privkey.pem
 SSLCertificateChainFile /etc/letsencrypt/live/<<fqdn>>/chain.pem
 SSLCertificateFile /etc/letsencrypt/live/<<fqdn>>/cert.pem
+Header always set Strict-Transport-Security "max-age=43200"
+
 
 
 /etc/apache2/sites-enabled/000-default

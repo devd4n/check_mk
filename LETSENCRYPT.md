@@ -20,7 +20,6 @@ apt install python3-certbot-dns-cloudflare
 Get Wildcard SSL Certificate
 
 certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini -d <<FQDN>> --preferred-challenges dns-01
-certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini -d monitoring.dan-dev.net --preferred-challenges dns-01
 
 ### Disable IPv6 if Cloudflare Token is resticted by IP
 sysctl -w net.ipv6.conf.all.disable_ipv6=1

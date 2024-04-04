@@ -8,7 +8,7 @@ CMK_ARCH=$(dpkg --print-architecture)
 CMK_DEB=$(echo check-mk-${CMK_TYPE}-${CMK_VERSION}_${CMK_SUBVERSION}.${CMK_OS}_${CMK_ARCH}.deb)
 
 apt update
-apt install openssh-server dpkg-sig -y
+apt install apache2 openssh-server dpkg-sig -y
 mkdir -p /temp/
 wget https://download.checkmk.com/checkmk/Check_MK-pubkey.gpg -P /temp/
 gpg --import /temp/Check_MK-pubkey.gpg
